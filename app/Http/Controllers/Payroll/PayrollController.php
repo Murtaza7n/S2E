@@ -147,5 +147,97 @@ class PayrollController extends Controller
             ]
         );
     }
+
+    public function listEmployees(Request $request)
+    {
+        $query = Employee::with(['department', 'designation']);
+        
+        if ($request->filled('department_id')) {
+            $query->where('department_id', $request->department_id);
+        }
+        
+        $employees = $query->latest()->paginate(100);
+        return view('payroll.list-employees', compact('employees'));
+    }
+
+    public function listMonthlyPayroll(Request $request)
+    {
+        $period = $request->filled('period') 
+            ? PayrollPeriod::where('period', $request->period)->first()
+            : PayrollPeriod::latest()->first();
+        
+        $records = $period 
+            ? PayrollRecord::where('payroll_period_id', $period->id)
+                ->with('employee')
+                ->paginate(100)
+            : collect();
+        
+        $periods = PayrollPeriod::latest()->get();
+        
+        return view('payroll.list-monthly-payroll', compact('records', 'period', 'periods'));
+    }
+
+    public function listDeductionsAllowances(Request $request)
+    {
+        $query = DB::table('employee_allowances')
+            ->join('employees', 'employee_allowances.employee_id', '=', 'employees.id')
+            ->join('allowances', 'employee_allowances.allowance_id', '=', 'allowances.id')
+            ->select('employees.name as employee_name', 'allowances.name as allowance_name', 
+                'employee_allowances.amount', 'employee_allowances.effective_from', 'employee_allowances.effective_to')
+            ->union(
+                DB::table('employee_deductions')
+                    ->join('employees', 'employee_deductions.employee_id', '=', 'employees.id')
+                    ->join('deductions', 'employee_deductions.deduction_id', '=', 'deductions.id')
+                    ->select('employees.name as employee_name', 'deductions.name as allowance_name',
+                        'employee_deductions.amount', 'employee_deductions.effective_from', 'employee_deductions.effective_to')
+            );
+        
+        $records = $query->get();
+        
+        return view('payroll.list-deductions-allowances', compact('records'));
+    }
+
+    public function authorizedLeavesDetail(Request $request)
+    {
+        $query = \App\Models\AuthorizedLeave::with('employee');
+        
+        if ($request->filled('employee_id')) {
+            $query->where('employee_id', $request->employee_id);
+        }
+        
+        $leaves = $query->latest()->paginate(100);
+        
+        return view('payroll.authorized-leaves-detail', compact('leaves'));
+    }
+
+    public function leaveStatus(Request $request)
+    {
+        $query = Employee::with(['authorizedLeaves', 'leaveApplications']);
+        
+        if ($request->filled('employee_id')) {
+            $query->where('id', $request->employee_id);
+        }
+        
+        $employees = $query->paginate(100);
+        
+        return view('payroll.leave-status', compact('employees'));
+    }
+
+    public function departmentRegister(Request $request)
+    {
+        $departmentId = $request->department_id;
+        $period = $request->filled('period') 
+            ? PayrollPeriod::where('period', $request->period)->first()
+            : PayrollPeriod::latest()->first();
+        
+        $records = PayrollRecord::whereHas('employee', function($q) use ($departmentId) {
+            $q->where('department_id', $departmentId);
+        })
+        ->where('payroll_period_id', $period->id)
+        ->with('employee')
+        ->get();
+        
+        return view('payroll.department-register', compact('records', 'period', 'departmentId'));
+    }
 }
 

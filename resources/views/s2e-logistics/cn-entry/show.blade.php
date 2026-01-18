@@ -47,7 +47,7 @@
                                 <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
                                     @if($cnEntry->status === 'delivered') bg-green-100 text-green-800
                                     @elseif($cnEntry->status === 'pending') bg-yellow-100 text-yellow-800
-                                    @else bg-blue-100 text-blue-800
+                                    @else bg-blue-100 text-blue-600-hover
                                     @endif">
                                     {{ ucfirst(str_replace('_', ' ', $cnEntry->status)) }}
                                 </span>

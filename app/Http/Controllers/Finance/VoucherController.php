@@ -26,10 +26,11 @@ class VoucherController extends Controller
         return view('finance.vouchers.index', compact('vouchers'));
     }
 
-    public function create()
+    public function create(Request $request)
     {
+        $type = $request->type ?? 'JVR'; // Default to Journal Voucher
         $accounts = ChartOfAccount::where('is_active', true)->get();
-        return view('finance.vouchers.create', compact('accounts'));
+        return view('finance.vouchers.create', compact('accounts', 'type'));
     }
 
     public function store(Request $request)

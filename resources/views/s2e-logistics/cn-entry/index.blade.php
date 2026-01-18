@@ -6,7 +6,7 @@
 <div class="px-4 py-6 sm:px-0">
     <div class="flex justify-between items-center mb-6">
         <h1 class="text-3xl font-bold text-gray-900">Consignment Notes</h1>
-        <a href="{{ route('s2e.cn-entry.create') }}" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        <a href="{{ route('s2e.cn-entry.create') }}" class="bg-blue-600 hover:bg-blue-600-hover text-white font-bold py-2 px-4 rounded">
             + New CN
         </a>
     </div>
@@ -75,14 +75,14 @@
                         <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
                             @if($cn->status === 'delivered') bg-green-100 text-green-800
                             @elseif($cn->status === 'pending') bg-yellow-100 text-yellow-800
-                            @else bg-blue-100 text-blue-800
+                            @else bg-blue-100 text-blue-600-hover
                             @endif">
                             {{ ucfirst(str_replace('_', ' ', $cn->status)) }}
                         </span>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Rs. {{ number_format($cn->total_amount, 2) }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                        <a href="{{ route('s2e.cn-entry.show', $cn) }}" class="text-blue-600 hover:text-blue-900 mr-3">View</a>
+                        <a href="{{ route('s2e.cn-entry.show', $cn) }}" class="text-blue-600 hover:text-blue-600-hover mr-3">View</a>
                         @if(!$cn->is_invoiced)
                             <a href="{{ route('s2e.cn-entry.edit', $cn) }}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
                         @endif

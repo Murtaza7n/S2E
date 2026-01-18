@@ -6,7 +6,7 @@
 <div class="px-4 py-6 sm:px-0">
     <div class="flex justify-between items-center mb-6">
         <h1 class="text-3xl font-bold text-gray-900">Employees</h1>
-        <a href="{{ route('payroll.employees.create') }}" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        <a href="{{ route('payroll.employees.create') }}" class="bg-blue-600 hover:bg-blue-600-hover text-white font-bold py-2 px-4 rounded">
             + New Employee
         </a>
     </div>
@@ -32,7 +32,7 @@
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $employee->designation->name }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Rs. {{ number_format($employee->basic_salary, 2) }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                        <a href="{{ route('payroll.employees.show', $employee) }}" class="text-blue-600 hover:text-blue-900">View</a>
+                        <a href="{{ route('payroll.employees.show', $employee) }}" class="text-blue-600 hover:text-blue-600-hover">View</a>
                     </td>
                 </tr>
                 @empty

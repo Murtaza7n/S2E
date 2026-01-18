@@ -148,6 +148,19 @@ return new class extends Migration
             $table->unique('cargo_office_id');
         });
 
+        // Riders (must be before consignment_notes)
+        Schema::create('riders', function (Blueprint $table) {
+            $table->id();
+            $table->string('code')->unique();
+            $table->string('name');
+            $table->string('phone')->nullable();
+            $table->string('cnic')->nullable();
+            $table->enum('type', ['pickup', 'delivery', 'both'])->default('both');
+            $table->foreignId('cargo_office_id')->constrained('cargo_offices')->onDelete('restrict');
+            $table->boolean('is_active')->default(true);
+            $table->timestamps();
+        });
+
         // Consignment Notes (CN)
         Schema::create('consignment_notes', function (Blueprint $table) {
             $table->id();
@@ -212,19 +225,6 @@ return new class extends Migration
             $table->index('status');
             $table->index('party_id');
             $table->index('cargo_office_id');
-        });
-
-        // Riders
-        Schema::create('riders', function (Blueprint $table) {
-            $table->id();
-            $table->string('code')->unique();
-            $table->string('name');
-            $table->string('phone')->nullable();
-            $table->string('cnic')->nullable();
-            $table->enum('type', ['pickup', 'delivery', 'both'])->default('both');
-            $table->foreignId('cargo_office_id')->constrained('cargo_offices')->onDelete('restrict');
-            $table->boolean('is_active')->default(true);
-            $table->timestamps();
         });
 
         // Vehicles

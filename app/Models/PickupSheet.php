@@ -22,5 +22,20 @@ class PickupSheet extends Model
     {
         return $this->hasMany(PickupSheetItem::class);
     }
+
+    public function cargoOffice()
+    {
+        return $this->belongsTo(CargoOffice::class);
+    }
+
+    public function rider()
+    {
+        return $this->belongsTo(Rider::class);
+    }
+
+    public function creator()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
 }
 

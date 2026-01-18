@@ -6,7 +6,7 @@
 <div class="px-4 py-6 sm:px-0">
     <div class="flex justify-between items-center mb-6">
         <h1 class="text-3xl font-bold text-gray-900">Users</h1>
-        <a href="{{ route('settings.users.create') }}" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        <a href="{{ route('settings.users.create') }}" class="bg-blue-600 hover:bg-blue-600-hover text-white font-bold py-2 px-4 rounded">
             + New User
         </a>
     </div>

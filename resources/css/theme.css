@@ -1,0 +1,145 @@
+/* S2E Logistics Brand Colors - Extracted from Logo */
+:root {
+    /* Primary Colors from Logo */
+    --s2e-orange: #FF6B35;        /* Vibrant Orange - S2E text and arrow */
+    --s2e-dark-blue: #1E3A5F;     /* Dark Blue - Globe bands */
+    --s2e-light-gray: #E5E7EB;    /* Light Gray/Silver - Globe bands */
+    --s2e-medium-gray: #6B7280;   /* Medium Gray - LOGISTICS text and tagline */
+    --s2e-white: #FFFFFF;         /* White - Background */
+    
+    /* Derived Colors */
+    --s2e-orange-hover: #E55A2B;  /* Darker orange for hover states */
+    --s2e-orange-light: #FF8C66;  /* Lighter orange for highlights */
+    --s2e-dark-blue-hover: #152A47; /* Darker blue for hover */
+    --s2e-gray-dark: #4B5563;     /* Darker gray for text */
+    --s2e-gray-light: #F3F4F6;    /* Very light gray for backgrounds */
+}
+
+/* Global Theme Application */
+body {
+    background-color: var(--s2e-white);
+    color: var(--s2e-gray-dark);
+}
+
+/* Navigation Bar - Using Dark Blue */
+.bg-blue-900 {
+    background-color: var(--s2e-dark-blue) !important;
+}
+
+.bg-blue-800 {
+    background-color: var(--s2e-dark-blue-hover) !important;
+}
+
+/* Buttons - Using Orange */
+.bg-blue-600 {
+    background-color: var(--s2e-orange) !important;
+}
+
+.bg-blue-600:hover,
+.hover\:bg-blue-700:hover {
+    background-color: var(--s2e-orange-hover) !important;
+}
+
+.bg-blue-700 {
+    background-color: var(--s2e-orange-hover) !important;
+}
+
+/* Links and Accents */
+.text-blue-600 {
+    color: var(--s2e-orange) !important;
+}
+
+.text-blue-600:hover,
+.hover\:text-blue-900:hover {
+    color: var(--s2e-orange-hover) !important;
+}
+
+/* Borders */
+.border-blue-600 {
+    border-color: var(--s2e-orange) !important;
+}
+
+/* Tables */
+.bg-gray-50 {
+    background-color: var(--s2e-gray-light) !important;
+}
+
+.bg-gray-100 {
+    background-color: var(--s2e-light-gray) !important;
+}
+
+/* Text Colors */
+.text-gray-500 {
+    color: var(--s2e-medium-gray) !important;
+}
+
+.text-gray-600 {
+    color: var(--s2e-medium-gray) !important;
+}
+
+.text-gray-700 {
+    color: var(--s2e-gray-dark) !important;
+}
+
+.text-gray-800 {
+    color: var(--s2e-gray-dark) !important;
+}
+
+/* Success/Info Colors - Using Orange variants */
+.bg-green-600 {
+    background-color: var(--s2e-orange) !important;
+}
+
+.bg-green-100 {
+    background-color: var(--s2e-orange-light) !important;
+    opacity: 0.2;
+}
+
+.text-green-800 {
+    color: var(--s2e-orange-hover) !important;
+}
+
+/* Primary Action Buttons */
+.btn-primary {
+    background-color: var(--s2e-orange);
+    color: var(--s2e-white);
+    border-color: var(--s2e-orange);
+}
+
+.btn-primary:hover {
+    background-color: var(--s2e-orange-hover);
+    border-color: var(--s2e-orange-hover);
+}
+
+/* Secondary Buttons - Using Gray */
+.btn-secondary {
+    background-color: var(--s2e-medium-gray);
+    color: var(--s2e-white);
+    border-color: var(--s2e-medium-gray);
+}
+
+.btn-secondary:hover {
+    background-color: var(--s2e-gray-dark);
+    border-color: var(--s2e-gray-dark);
+}
+
+/* Focus States */
+.focus\:ring-blue-500:focus {
+    ring-color: var(--s2e-orange) !important;
+}
+
+/* Print Styles */
+@media print {
+    .bg-blue-900 {
+        background-color: var(--s2e-dark-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    
+    .text-blue-600 {
+        color: var(--s2e-orange) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}
+

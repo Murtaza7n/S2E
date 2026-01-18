@@ -5,14 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - S2E Logistics ERP</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <style>
+        /* S2E Brand Colors - Login Page - Using ONLY Logo Colors */
+        /* Buttons - Orange (#FF6B35) */
+        .bg-blue-600 { background-color: #FF6B35 !important; }
+        .bg-blue-700 { background-color: #E55A2B !important; }
+        .hover\:bg-blue-700:hover { background-color: #E55A2B !important; }
+        
+        /* Links & Text - Orange (#FF6B35) */
+        .text-blue-600 { color: #FF6B35 !important; }
+        
+        /* Focus States - Orange */
+        .focus\:ring-blue-500:focus { --tw-ring-color: #FF6B35 !important; }
+        .focus\:border-blue-500:focus { border-color: #FF6B35 !important; }
+        .border-blue-500 { border-color: #FF6B35 !important; }
+    </style>
 </head>
-<body class="bg-gray-100">
-    <div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+<body class="bg-gray-100 flex flex-col min-h-screen">
+    <div class="flex-grow flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div class="max-w-md w-full space-y-8">
             <div>
-                <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-                    S2E Logistics ERP
-                </h2>
+                <div class="flex justify-center mb-4">
+                    <img src="{{ asset('images/logo/s2e-logo.svg') }}" alt="S2E Logistics" class="h-20 w-auto">
+                </div>
                 <p class="mt-2 text-center text-sm text-gray-600">
                     Sign in to your account
                 </p>
@@ -59,6 +74,9 @@
             </form>
         </div>
     </div>
+    
+    <!-- Global Footer -->
+    @include('components.footer')
 </body>
 </html>
 

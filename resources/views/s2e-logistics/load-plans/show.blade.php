@@ -18,7 +18,7 @@
             @if($loadPlan->status === 'dispatched')
                 <form method="POST" action="{{ route('s2e.load-plans.receive', $loadPlan) }}" class="inline">
                     @csrf
-                    <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    <button type="submit" class="bg-blue-600 hover:bg-blue-600-hover text-white font-bold py-2 px-4 rounded">
                         Mark Received
                     </button>
                 </form>
@@ -44,7 +44,7 @@
                 <dd class="text-sm">
                     <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
                         @if($loadPlan->status === 'received') bg-green-100 text-green-800
-                        @elseif($loadPlan->status === 'dispatched') bg-blue-100 text-blue-800
+                        @elseif($loadPlan->status === 'dispatched') bg-blue-100 text-blue-600-hover
                         @else bg-yellow-100 text-yellow-800
                         @endif">
                         {{ ucfirst($loadPlan->status) }}

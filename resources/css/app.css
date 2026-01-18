@@ -2,3 +2,96 @@
 @tailwind components;
 @tailwind utilities;
 
+/* S2E Logistics Brand Theme - Using Logo Colors Only */
+@layer base {
+    :root {
+        --s2e-orange: #FF6B35;
+        --s2e-orange-hover: #E55A2B;
+        --s2e-orange-light: #FF8C66;
+        --s2e-dark-blue: #1E3A5F;
+        --s2e-dark-blue-hover: #152A47;
+        --s2e-light-gray: #E5E7EB;
+        --s2e-medium-gray: #6B7280;
+        --s2e-gray-dark: #4B5563;
+        --s2e-gray-light: #F3F4F6;
+        --s2e-white: #FFFFFF;
+    }
+}
+
+@layer components {
+    /* Primary Buttons - Orange */
+    .btn-primary {
+        @apply bg-s2e-orange hover:bg-s2e-orange-hover text-white font-medium py-2 px-4 rounded transition-colors;
+    }
+    
+    /* Secondary Buttons - Gray */
+    .btn-secondary {
+        @apply bg-s2e-medium-gray hover:bg-s2e-gray-dark text-white font-medium py-2 px-4 rounded transition-colors;
+    }
+    
+    /* Navigation Bar - Dark Blue */
+    .nav-primary {
+        @apply bg-s2e-dark-blue text-white;
+    }
+    
+    .nav-hover {
+        @apply hover:bg-s2e-dark-blue-hover;
+    }
+    
+    /* Links - Orange */
+    .link-primary {
+        @apply text-s2e-orange hover:text-s2e-orange-hover;
+    }
+    
+    /* Tables - Using brand colors */
+    .table-header {
+        @apply bg-s2e-gray-light text-s2e-gray-dark;
+    }
+    
+    /* Success/Info - Using Orange */
+    .alert-success {
+        @apply bg-s2e-orange-light bg-opacity-20 border border-s2e-orange text-s2e-orange-hover;
+    }
+    
+    /* ============================================
+       INPUT FIELD VISIBILITY - GLOBAL STYLES
+       ============================================ */
+    
+    /* All Form Inputs - Always Visible with Borders */
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="number"],
+    input[type="tel"],
+    input[type="url"],
+    input[type="search"],
+    input[type="date"],
+    input[type="datetime-local"],
+    input[type="time"],
+    input[type="month"],
+    input[type="week"],
+    textarea,
+    select {
+        @apply bg-white border border-gray-300 rounded-md px-3 py-2 text-gray-900 text-sm;
+        min-height: 2.5rem;
+    }
+    
+    input:focus,
+    textarea:focus,
+    select:focus {
+        @apply border-orange-500 ring-2 ring-orange-200 outline-none;
+    }
+    
+    input:hover,
+    textarea:hover,
+    select:hover {
+        @apply border-gray-400;
+    }
+    
+    input:disabled,
+    textarea:disabled,
+    select:disabled {
+        @apply bg-gray-100 border-gray-200 text-gray-500 cursor-not-allowed;
+    }
+}
+

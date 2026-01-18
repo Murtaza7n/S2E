@@ -1,10 +1,19 @@
 @extends('layouts.app')
+    @include('components.export-buttons')
 
+    @include('components.export-buttons')
 @section('title', 'Sales Report')
+    @include('components.export-buttons')
 
+    @include('components.export-buttons')
 @section('content')
+    @include('components.export-buttons')
+@include('components.print-header')
+    @include('components.export-buttons')
 <div class="px-4 py-6 sm:px-0">
+    @include('components.export-buttons')
     <h1 class="text-3xl font-bold text-gray-900 mb-6">Sales Report</h1>
+    @include('components.export-buttons')
 
     <div class="bg-white shadow rounded-lg p-6 mb-6">
         <form method="GET" class="grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -19,7 +28,7 @@
                     class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
             </div>
             <div class="flex items-end">
-                <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                <button type="submit" class="bg-blue-600 hover:bg-blue-600-hover text-white font-bold py-2 px-4 rounded">
                     Generate
                 </button>
             </div>
