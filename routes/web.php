@@ -48,13 +48,14 @@ Route::middleware(['auth'])->group(function () {
     
     // Initial Setup
     Route::prefix('s2e-logistics/initial-setup')->name('initial-setup.')->group(function () {
-        Route::resource('item-codes', InitialSetupController::class)->only(['index', 'store', 'update', 'destroy']);
-        Route::resource('invoice-charges', InitialSetupController::class)->only(['index', 'store', 'update', 'destroy']);
-        Route::resource('cargo-officers', InitialSetupController::class)->only(['index', 'store', 'update', 'destroy']);
-        Route::resource('cn-stock', InitialSetupController::class)->only(['index', 'store', 'update', 'destroy']);
-        Route::resource('cities', InitialSetupController::class)->only(['index', 'store', 'update', 'destroy']);
-        Route::resource('zones', InitialSetupController::class)->only(['index', 'store', 'update', 'destroy']);
-        Route::resource('party-rates', InitialSetupController::class)->only(['index', 'store', 'update', 'destroy']);
+        Route::get('item-codes', [InitialSetupController::class, 'itemCodesIndex'])->name('item-codes.index');
+        Route::post('item-codes', [InitialSetupController::class, 'itemCodesStore'])->name('item-codes.store');
+        Route::get('invoice-charges', [InitialSetupController::class, 'invoiceChargesIndex'])->name('invoice-charges.index');
+        Route::get('cargo-officers', [InitialSetupController::class, 'cargoOfficersIndex'])->name('cargo-officers.index');
+        Route::get('cn-stock', [InitialSetupController::class, 'cnStockIndex'])->name('cn-stock.index');
+        Route::get('cities', [InitialSetupController::class, 'citiesIndex'])->name('cities.index');
+        Route::get('zones', [InitialSetupController::class, 'zonesIndex'])->name('zones.index');
+        Route::get('party-rates', [InitialSetupController::class, 'partyRatesIndex'])->name('party-rates.index');
     });
 
     // S2E Logistics Operations
